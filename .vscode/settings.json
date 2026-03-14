@@ -1,0 +1,10 @@
+{
+  "json.schemas": [
+    {
+      "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/refs/heads/main/general/manifest.json",
+      "fileMatch": [
+        "manifest.json"
+      ]
+    }
+  ]
+}

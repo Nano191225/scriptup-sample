@@ -1,0 +1,84 @@
+name: Upload mcpack
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+    ##############################
+
+    ###   pnpm   ###
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: |
+          pnpm i --frozen-lockfile
+          
+      - name: Build
+        run: pnpm run build
+
+    ###   npm   ###
+
+      # - name: Use Node.js 24
+      #   uses: actions/setup-node@v4
+      #   with:
+      #     node-version: "24"
+      #     cache: "npm"
+
+      # - name: Install dependencies
+      #   run: |
+      #     npm ci
+
+      # - name: Build
+      #   run: |
+      #     npm run build
+
+    ###   yarn   ###
+
+      # - name: Use Node.js 24
+      #   uses: actions/setup-node@v4
+      #   with:
+      #     node-version: "24"
+      #     cache: "yarn"
+
+      # - name: Install dependencies
+      #   uses: borales/actions-yarn@v4
+      #   with:
+      #     cmd: install
+
+      # - name: Build
+      #   uses: borales/actions-yarn@v4
+      #   with:
+      #     cmd: build
+
+    ##############################
+
+      - name: Get Pack Name
+        id: get-name
+        run: |
+          name=$(jq -r '.header.name' manifest.json | tr -d '"' | tr ' ' '_')
+          echo "fileName=$name" >> $GITHUB_OUTPUT
+
+      - name: Make Archive
+        run: |
+          echo "Creating archive: ${{ steps.get-name.outputs.fileName }}"
+          files=$(jq -r '.files[]' package.json | tr '\n' ' ')
+          zip -r "${{ steps.get-name.outputs.fileName }}.mcpack" $files
+          cp "${{ steps.get-name.outputs.fileName }}.mcpack" "${{ steps.get-name.outputs.fileName }}.zip"
+
+      - name: Upload Release Asset
+        run: gh release upload "$GITHUB_REF_NAME" "${{ steps.get-name.outputs.fileName }}.mcpack" "${{ steps.get-name.outputs.fileName }}.zip" --clobber
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

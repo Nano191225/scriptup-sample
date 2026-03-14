@@ -1,0 +1,13 @@
+{
+  "include": [
+    "src"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "noLib": true,
+    "types": [
+      "@bedrock-apis/env-types"
+    ],
+    "noEmit": true
+  }
+}
