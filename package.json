@@ -17,6 +17,7 @@
         "@minecraft/server": "2.6.0-beta.1.26.3-stable",
         "@minecraft/server-ui": "2.1.0-beta.1.26.3-stable",
         "@types/text-encoding": "^0.0.40",
+        "@nano191225/scriptup": "^1.1.0",
         "tsdown": "^0.21.2",
         "typescript": "^5.9.3"
     },
