@@ -47,23 +47,42 @@ jobs:
       #   run: |
       #     npm run build
 
-    ###   yarn   ###
+    ###   bun   ###
 
       - name: Use Node.js 24
         uses: actions/setup-node@v4
         with:
           node-version: "24"
-          cache: "yarn"
+          cache: "bun"
+
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v2
 
       - name: Install dependencies
-        uses: borales/actions-yarn@v4
-        with:
-          cmd: install
+        run: |
+          bun i --frozen-lockfile
 
       - name: Build
-        uses: borales/actions-yarn@v4
-        with:
-          cmd: build
+        run: |
+          bun run build
+
+    ###   yarn   ###
+
+      # - name: Use Node.js 24
+      #   uses: actions/setup-node@v4
+      #   with:
+      #     node-version: "24"
+      #     cache: "yarn"
+
+      # - name: Install dependencies
+      #   uses: borales/actions-yarn@v4
+      #   with:
+      #     cmd: install
+
+      # - name: Build
+      #   uses: borales/actions-yarn@v4
+      #   with:
+      #     cmd: build
 
     ##############################
 
