@@ -1,36 +1,36 @@
 {
-    "name": "scriptup-sample",
-    "version": "0.1.0",
-    "type": "module",
-    "scripts": {
-        "build": "scriptup build",
-        "watch": "scriptup build --watch"
-    },
-    "dependencies": {
-        "@noble/hashes": "^2.0.1",
-        "scriptup-sample-pkg": "^0.1.0",
-        "text-encoding": "^0.7.0",
-        "valibot": "^1.2.0"
-    },
-    "devDependencies": {
-        "@bedrock-apis/env-types": "1.0.0-beta.6",
-        "@minecraft/server": "2.6.0-beta.1.26.3-stable",
-        "@minecraft/server-ui": "2.1.0-beta.1.26.3-stable",
-        "@types/text-encoding": "^0.0.40",
-        "@nano191225/scriptup": "^1.1.0",
-        "tsdown": "^0.21.2",
-        "typescript": "^5.9.3"
-    },
-    "keywords": [
-        "minecraft",
-        "minecraft-bedrock",
-        "minecraft-script-api",
-        "scriptapi"
-    ],
-    "files": [
-        "manifest.json",
-        "scripts",
-        "LICENSE",
-        "README.md"
-    ]
+  "name": "scriptup-sample",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "build": "scriptup build --release",
+    "watch": "scriptup build --watch"
+  },
+  "dependencies": {
+    "@noble/hashes": "^2.0.1",
+    "scriptup-sample-pkg": "^0.1.0",
+    "text-encoding": "^0.7.0",
+    "valibot": "^1.2.0"
+  },
+  "devDependencies": {
+    "@bedrock-apis/env-types": "^1.0.0-beta.6",
+    "@minecraft/server": "2.6.0-beta.1.26.3-stable",
+    "@minecraft/server-ui": "2.1.0-beta.1.26.3-stable",
+    "@types/text-encoding": "^0.0.40",
+    "@nano191225/scriptup": "^1.1.0",
+    "tsdown": "^0.21.2",
+    "typescript": "^5.9.3"
+  },
+  "keywords": [
+    "minecraft",
+    "minecraft-bedrock",
+    "minecraft-script-api",
+    "scriptapi"
+  ],
+  "files": [
+    "manifest.json",
+    "scripts",
+    "LICENSE",
+    "README.md"
+  ]
 }
