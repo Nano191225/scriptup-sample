@@ -83,4 +83,4 @@ jobs:
       - name: Upload Release Asset
         run: gh release upload "$GITHUB_REF_NAME" "${{ steps.get-name.outputs.fileName }}.mcpack" "${{ steps.get-name.outputs.fileName }}.zip" --clobber
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
